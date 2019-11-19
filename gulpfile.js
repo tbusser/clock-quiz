@@ -3,11 +3,11 @@ const gulp = require('gulp'),
 	argv = require('yargs').argv,
 	config = {
 		output: {
-			base: './dist/',
-			css: './dist/css/',
-			html: './dist/',
-			img: './dist/img/',
-			js: './dist/js/'
+			base: './docs/',
+			css: './docs/css/',
+			html: './docs/',
+			img: './docs/img/',
+			js: './docs/js/'
 		},
 		production: argv.mode === 'production',
 		src: {
