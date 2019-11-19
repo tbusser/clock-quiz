@@ -1,0 +1,43 @@
+@import "01-settings/color";
+
+@import "03-generic/box-sizing";
+
+@import
+	"04-elements/body",
+	"04-elements/button";
+
+@import
+	"05-objects/orientation-container";
+
+@import
+	"06-components/clock",
+	"06-components/quick-input",
+	"06-components/result";
+
+.c-answer {
+	// border: 4px solid hotpink;
+	border-radius: 10px;
+	// box-shadow: 0 0 2em rgba(0,0,0,.4);
+	display: flex;
+	flex-direction: column;
+
+	&__title {
+		// background-color: hotpink;
+		// color: #fff;
+		font-size: 1.5em;
+		margin: 0 -1px;
+		padding: .25em 0;
+		position: relative;
+		text-align: center;
+	}
+
+	&__inner-container {
+		// background-color: rgba(pink, .8);
+		border-radius: 0 0 10px 10px;
+		// box-shadow: inset 0 0 4em rgba(255,255,255,.5);
+		flex-grow: 1;
+		padding: 1em;
+	}
+}
+
+@import "07-utilities/hide";

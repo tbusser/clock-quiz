@@ -1,0 +1,49 @@
+@keyframes spin {
+	0% {transform: scale(0) rotate(0) perspective(500px) translateZ(-400px)};
+	60% {transform: scale(1) rotate(1440deg)};
+	61% { transform: perspective(500px) translateZ(0) };
+	100% { transform: perspective(500px) translateZ(499px);};
+}
+
+.c-result {
+	align-items: center;
+	display: none;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	justify-content: center;
+	top: 0;
+	width: 100vw;
+
+	&:before {
+		background-color: rgba(255, 255, 255, .5);
+		content: '';
+		display: block;
+		height: 100vh;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100vw;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		font-size: 20em;
+		justify-content: center;
+		line-height: 1;
+		position: relative;
+		transform-origin: center;
+	}
+
+	&.is-active {
+		display: flex;
+
+		.c-result__content {
+			animation-duration: 1s;
+			animation-name: spin;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+		}
+	}
+}

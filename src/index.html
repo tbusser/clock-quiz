@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+	<!-- partial:partials/generic/_head.html -->
+	<!-- partial -->
+	<title>Clock quiz</title>
+</head>
+<body>
+	<main>
+		<div class="o-orientation-container">
+			<div class="js-clock o-orientation-container__item o-orientation-container__item--no-shrink c-clock">
+				<!--
+					The ticks to indicate the 5 minute intervals.
+				-->
+				<div class="c-clock__tick c-clock__tick--small">
+					<span class="c-clock__tick-label">12</span>
+					<span class="c-clock__tick-label">6</span>
+				</div>
+				<div class="c-clock__tick c-clock__tick--1-and-7">
+					<span class="c-clock__tick-label">1</span>
+					<span class="c-clock__tick-label">7</span>
+				</div>
+				<div class="c-clock__tick c-clock__tick--2-and-8"></div>
+				<div class="c-clock__tick c-clock__tick--3-and-9 c-clock__tick--small">
+						<span class="c-clock__tick-label">3</span>
+						<span class="c-clock__tick-label">9</span>
+				</div>
+				<div class="c-clock__tick c-clock__tick--4-and-10"></div>
+				<div class="c-clock__tick c-clock__tick--5-and-11"></div>
+
+				<div class="js-clock__hour-hand c-clock__hand c-clock__hand--hour"></div>
+				<div class="js-clock__minute-hand c-clock__hand c-clock__hand--minute"></div>
+			</div>
+
+			<div class="o-orientation-container__item c-answer">
+				<h1 class="c-answer__title">Hoe laat is het?</h1>
+				<div class="js-quick-type c-answer__inner-container">
+					<form action="" class="js-answer-form">
+						<input class="js-quick-type__input js-answer-form__input" type="text">
+						<button type="reset">Reset</button>
+						<button>Check</button>
+					</form>
+					<div>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="1">1</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="2">2</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="3">3</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="4">4</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="5">5</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="6">6</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="7">7</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="8">8</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="9">9</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="10">10</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="11">11</button>
+						<button class="js-quick-type__item c-quick-input__number" type="button" data-value="12">12</button>
+					</div>
+
+					<div>
+						<button class="js-quick-type__item" type="button" data-value="kwart over">kwart over</button>
+						<button class="js-quick-type__item" type="button" data-value="kwart voor">kwart voor</button>
+						<button class="js-quick-type__item" type="button" data-value="over half">over half</button>
+						<button class="js-quick-type__item" type="button" data-value="voor half">voor half</button>
+						<button class="js-quick-type__item" type="button" data-value="over">over</button>
+						<button class="js-quick-type__item" type="button" data-value="voor">voor</button>
+						<button class="js-quick-type__item" type="button" data-value="half">half</button>
+						<button class="js-quick-type__item" type="button" data-value="uur">uur</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="js-result c-result">
+			<div class="js-result__label c-result__content">
+			</div>
+		</div>
+	</main>
+	<script type="module" src="js/bundle.dev.js"></script>
+</body>
+</html>

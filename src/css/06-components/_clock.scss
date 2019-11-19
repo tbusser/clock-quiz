@@ -1,0 +1,129 @@
+.c-clock {
+	--clock-color-main: var(--color-primary);
+	--clock-radius: 150px;
+	--clock-diameter: calc(var(--clock-radius) * 2);
+
+	background-color: pink;
+	box-shadow: 0 0 2em rgba(0,0,0,.4), inset 0 0 4em rgba(255,255,255,.5);
+	border: 4px solid var(--clock-color-main);
+	border-radius: 50%;
+	height: var(--clock-diameter);
+	position: relative;
+	width: var(--clock-diameter);
+
+	&::before {
+		background-size: cover;
+		background-image: url(/img/unicorn.png);
+		border-radius: 50%;
+		bottom: 0;
+		content: '';
+		left: 0px;
+		opacity: .3;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	@media screen and (max-width: 700px) and (orientation: landscape) {
+		--clock-radius: 100px;
+	}
+
+	@media screen and (max-width: 700px) and (orientation: portrait) {
+		--clock-radius: 100px;
+	}
+
+
+	/* ---------------------------------------------------------------------- *\
+		HAND: shows the hour or minute hand.
+	\* ---------------------------------------------------------------------- */
+	&__hand {
+		--hand-offset: 10px;
+		--hand-width-hour: 8px;
+		--hand-width-minute: 4px;
+
+		// Position the bottom of the hand 10px below the center of the
+		// container. This way the minute and hour hand will have some overlap.
+		bottom: calc(50% - var(--hand-offset));
+		position: absolute;
+		transform-origin: center calc(100% - var(--hand-offset));
+		transition: transform .3s linear;
+
+		&--hour {
+			background-color: #333;
+			box-shadow: 0 0 2px rgba(0,0,0,.5);
+			height: calc(var(--clock-radius) - 60px);
+			left: calc(50% - (var(--hand-width-hour) / 2));
+			width: var(--hand-width-hour);
+		}
+
+		&--minute {
+			background-color: #000;
+			box-shadow: 0 0 6px rgba(0,0,0,.5);
+			height: calc(var(--clock-radius) - 15px);
+			left: calc(50% - (var(--hand-width-minute) / 2));
+			width: var(--hand-width-minute)
+		}
+	}
+
+
+
+	/* ---------------------------------------------------------------------- *\
+		TICK: shows a small black bar for each 5 minute interval.
+	\* ---------------------------------------------------------------------- */
+	&__tick {
+		--tick-length: 4%;
+		--tick-width: 4px;
+
+		align-items: center;
+		background: linear-gradient(
+				var(--clock-color-main) 0%,
+				var(--clock-color-main) var(--tick-length),
+				#0000 var(--tick-length),
+				#0000 calc(100% - var(--tick-length)), calc(100% - var(--tick-length)),
+				var(--clock-color-main) 100%
+			);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: calc(var(--clock-diameter) - 8px);
+		left: calc(50% - (var(--tick-width) / 2));
+		padding-bottom: var(--tick-length);
+		padding-top: var(--tick-length);
+		position: absolute;
+		transform-origin: center;
+		top: 0;
+		width: var(--tick-width);
+
+		/**
+		 * A smaller variant for the 5 minute intervals which also display
+		 * a number.
+		 */
+		&--small { --tick-length: 1.5%; }
+
+		/**
+		 * Creates modifiers to rotate the ticks. The modifiers will be named
+		 * c-clock__tick--1-and-7, c-clock__tick--2-and-8,
+		 * c-clock__tick--3-and-9, c-clock__tick--4-and-10 and
+		 * c-clock__tick--5-and-11.
+		 *
+		 * The labels inside the ticks will be rotated in the opposite direction
+		 * so the numbers are displayed standing up.
+		 */
+		@for $i from 1 through 5 {
+			&--#{$i}-and-#{$i + 6} {
+				transform: rotate(#{$i * 30deg});
+
+				.c-clock__tick-label {
+					transform: rotate(-#{$i * 30deg});
+				}
+			}
+		}
+	}
+
+	.c-clock__tick-label {
+		font-size: 1.25em;
+		// The line height controls the distance between the label text and the
+		// tick it is displayed next to.
+		line-height: 1.3;
+	}
+}
