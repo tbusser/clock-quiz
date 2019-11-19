@@ -56,7 +56,7 @@ button {
 	\* ---------------------------------------------------------------------- */ }
   .c-clock::before {
     background-size: cover;
-    background-image: url(/img/unicorn.png);
+    background-image: url(img/unicorn.png);
     border-radius: 50%;
     bottom: 0;
     content: '';
