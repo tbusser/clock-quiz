@@ -1,0 +1,220 @@
+:root {
+  --color-primary: hotpink; }
+
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 2em; }
+
+button {
+  background-color: #fff;
+  border: 2px solid var(--color-primary);
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit; }
+
+.o-orientation-container {
+  display: flex; }
+  .o-orientation-container__item + .o-orientation-container__item {
+    margin-left: 2em; }
+  .o-orientation-container__item--no-shrink {
+    flex-shrink: 0; }
+  @media screen and (orientation: portrait) {
+    .o-orientation-container {
+      flex-direction: column; }
+      .o-orientation-container__item + .o-orientation-container__item {
+        margin-left: 0;
+        margin-top: 2em; } }
+
+.c-clock {
+  --clock-color-main: var(--color-primary);
+  --clock-radius: 150px;
+  --clock-diameter: calc(var(--clock-radius) * 2);
+  background-color: pink;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.4), inset 0 0 4em rgba(255, 255, 255, 0.5);
+  border: 4px solid var(--clock-color-main);
+  border-radius: 50%;
+  height: var(--clock-diameter);
+  position: relative;
+  width: var(--clock-diameter);
+  /* ---------------------------------------------------------------------- *\
+		HAND: shows the hour or minute hand.
+	\* ---------------------------------------------------------------------- */
+  /* ---------------------------------------------------------------------- *\
+		TICK: shows a small black bar for each 5 minute interval.
+	\* ---------------------------------------------------------------------- */ }
+  .c-clock::before {
+    background-size: cover;
+    background-image: url(/img/unicorn.png);
+    border-radius: 50%;
+    bottom: 0;
+    content: '';
+    left: 0px;
+    opacity: .3;
+    position: absolute;
+    right: 0;
+    top: 0; }
+  @media screen and (max-width: 700px) and (orientation: landscape) {
+    .c-clock {
+      --clock-radius: 100px; } }
+  @media screen and (max-width: 700px) and (orientation: portrait) {
+    .c-clock {
+      --clock-radius: 100px; } }
+  .c-clock__hand {
+    --hand-offset: 10px;
+    --hand-width-hour: 8px;
+    --hand-width-minute: 4px;
+    bottom: calc(50% - var(--hand-offset));
+    position: absolute;
+    transform-origin: center calc(100% - var(--hand-offset));
+    transition: transform .3s linear; }
+    .c-clock__hand--hour {
+      background-color: #333;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      height: calc(var(--clock-radius) - 60px);
+      left: calc(50% - (var(--hand-width-hour) / 2));
+      width: var(--hand-width-hour); }
+    .c-clock__hand--minute {
+      background-color: #000;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+      height: calc(var(--clock-radius) - 15px);
+      left: calc(50% - (var(--hand-width-minute) / 2));
+      width: var(--hand-width-minute); }
+  .c-clock__tick {
+    --tick-length: 4%;
+    --tick-width: 4px;
+    align-items: center;
+    background: linear-gradient(var(--clock-color-main) 0%, var(--clock-color-main) var(--tick-length), #0000 var(--tick-length), #0000 calc(100% - var(--tick-length)), calc(100% - var(--tick-length)), var(--clock-color-main) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(var(--clock-diameter) - 8px);
+    left: calc(50% - (var(--tick-width) / 2));
+    padding-bottom: var(--tick-length);
+    padding-top: var(--tick-length);
+    position: absolute;
+    transform-origin: center;
+    top: 0;
+    width: var(--tick-width);
+    /**
+		 * A smaller variant for the 5 minute intervals which also display
+		 * a number.
+		 */
+    /**
+		 * Creates modifiers to rotate the ticks. The modifiers will be named
+		 * c-clock__tick--1-and-7, c-clock__tick--2-and-8,
+		 * c-clock__tick--3-and-9, c-clock__tick--4-and-10 and
+		 * c-clock__tick--5-and-11.
+		 *
+		 * The labels inside the ticks will be rotated in the opposite direction
+		 * so the numbers are displayed standing up.
+		 */ }
+    .c-clock__tick--small {
+      --tick-length: 1.5%; }
+    .c-clock__tick--1-and-7 {
+      transform: rotate(30deg); }
+      .c-clock__tick--1-and-7 .c-clock__tick-label {
+        transform: rotate(-30deg); }
+    .c-clock__tick--2-and-8 {
+      transform: rotate(60deg); }
+      .c-clock__tick--2-and-8 .c-clock__tick-label {
+        transform: rotate(-60deg); }
+    .c-clock__tick--3-and-9 {
+      transform: rotate(90deg); }
+      .c-clock__tick--3-and-9 .c-clock__tick-label {
+        transform: rotate(-90deg); }
+    .c-clock__tick--4-and-10 {
+      transform: rotate(120deg); }
+      .c-clock__tick--4-and-10 .c-clock__tick-label {
+        transform: rotate(-120deg); }
+    .c-clock__tick--5-and-11 {
+      transform: rotate(150deg); }
+      .c-clock__tick--5-and-11 .c-clock__tick-label {
+        transform: rotate(-150deg); }
+  .c-clock .c-clock__tick-label {
+    font-size: 1.25em;
+    line-height: 1.3; }
+
+.c-quick-input__number {
+  border-radius: 50%;
+  height: 40px;
+  line-height: 1;
+  margin-bottom: .5em;
+  margin-right: .5em;
+  text-align: center;
+  width: 40px; }
+
+@keyframes spin {
+  0% {
+    transform: scale(0) rotate(0) perspective(500px) translateZ(-400px); }
+  60% {
+    transform: scale(1) rotate(1440deg); }
+  61% {
+    transform: perspective(500px) translateZ(0); }
+  100% {
+    transform: perspective(500px) translateZ(499px); } }
+
+.c-result {
+  align-items: center;
+  display: none;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  justify-content: center;
+  top: 0;
+  width: 100vw; }
+  .c-result:before {
+    background-color: rgba(255, 255, 255, 0.5);
+    content: '';
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw; }
+  .c-result__content {
+    align-items: center;
+    display: flex;
+    font-size: 20em;
+    justify-content: center;
+    line-height: 1;
+    position: relative;
+    transform-origin: center; }
+  .c-result.is-active {
+    display: flex; }
+    .c-result.is-active .c-result__content {
+      animation-duration: 1s;
+      animation-name: spin;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear; }
+
+.c-answer {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column; }
+  .c-answer__title {
+    font-size: 1.5em;
+    margin: 0 -1px;
+    padding: .25em 0;
+    position: relative;
+    text-align: center; }
+  .c-answer__inner-container {
+    border-radius: 0 0 10px 10px;
+    flex-grow: 1;
+    padding: 1em; }
+
+.u-hidden {
+  display: none !important; }
+
+/*# sourceMappingURL=main.css.map */
