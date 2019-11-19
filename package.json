@@ -1,0 +1,78 @@
+{
+  "name": "Calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cover": "cross-env BABEL_ENV=coverage nyc mocha ./src/**/*.test.js",
+    "start": "gulp dev",
+    "test": "_mocha --require @babel/register ./src/**/*.test.js",
+    "test-single": "_mocha --require @babel/register $1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "@istanbuljs/nyc-config-babel": "^2.1.1",
+    "autoprefixer": "^9.3.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.2.0",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.2",
+    "cross-env": "^5.2.1",
+    "cssnano": "^4.1.7",
+    "del": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-inject-partials": "^1.0.4",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-remove-code": "^3.0.4",
+    "gulp-sass": "^4.0.2",
+    "gulp-server-livereload": "^1.9.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1",
+    "js-date-helper": "^1.4.0",
+    "mocha": "^6.2.0",
+    "node-sass": "^4.9.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.4.2",
+    "sinon-chai": "^3.3.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^12.0.2"
+  },
+  "dependencies": {
+    "core-js": "^3.2.1",
+    "lodash": "^4.17.15"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
+  ],
+  "nyc": {
+    "exclude": [
+      "src/**/*.test.js"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
+}
