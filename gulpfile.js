@@ -29,7 +29,7 @@ require('./gulp/js')(gulp, config, plugins);
 
 // Global Gulp tasks. These are the taks that will usually be run from the CLI.
 gulp.task('webserver', function webserver(taskReady) {
-	return gulp.src('dist').pipe(
+	return gulp.src('docs').pipe(
 		plugins.serverLivereload({
 			directoryListing: false,
 			livereload: true,
