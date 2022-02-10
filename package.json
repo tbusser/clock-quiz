@@ -45,7 +45,7 @@
     "gulp-watch": "^5.0.1",
     "js-date-helper": "^1.4.0",
     "mocha": "^6.2.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "^7.0.0",
     "nyc": "^14.1.1",
     "sinon": "^7.4.2",
     "sinon-chai": "^3.3.0",
